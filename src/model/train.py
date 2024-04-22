@@ -34,7 +34,7 @@ def split_data(df: pd.DataFrame):
     lst += ['DiastolicBloodPressure', 'TricepsThickness']
     lst += ['SerumInsulin', 'BMI', 'DiabetesPedigree', 'Age']
     X, y = df[lst].values, df['Diabetic'].values
-    return train_test_split(X, y, test_size=0.32, random_state=0)
+    return train_test_split(X, y, test_size=0.29, random_state=0)
 
 
 def train_model(reg_rate, X_train, X_test, y_train, y_test):
