@@ -1,0 +1,12 @@
+name: basic-env-ml
+channels:
+  - conda-forge
+dependencies:
+  - python=3.8
+  - pip
+  - pip:
+    - numpy
+    - pandas
+    - scikit-learn
+    - matplotlib
+    - azureml-mlflow
