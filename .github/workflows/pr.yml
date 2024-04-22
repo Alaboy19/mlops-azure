@@ -3,7 +3,7 @@ on:
   pull_request:
 jobs:
   print:
-  runs-on: ubuntu-latest
-  steps:
-    name: print statement
-    run: echo "Will add code checks here in next challenge"
+    runs-on: ubuntu-latest
+    steps:
+      name: print statement
+      run: echo "Will add code checks here in next challenge"
