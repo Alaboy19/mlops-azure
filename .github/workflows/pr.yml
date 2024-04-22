@@ -1,7 +1,9 @@
-name: Placeholder
+name: pullrequestTrigger
 on:
   pull_request:
 jobs:
-  job1:
+  print:
+  runs-on: ubuntu-latest
+  steps:
     name: print statement
     run: echo "Will add code checks here in next challenge"
