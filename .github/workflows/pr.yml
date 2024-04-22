@@ -1,5 +1,7 @@
 name: Placeholder
 on:
   pull_request:
-run: echo "Will add code checks here in next challenge"
-
+jobs:
+  job1:
+    name: print statement
+    run: echo "Will add code checks here in next challenge"
