@@ -1,9 +1,15 @@
-name: pullrequestTrigger
+name: Pull Request Workflow
+
 on:
   pull_request:
+    # This triggers the workflow on pull request events for any branches
+    branches: 
+      - '*'
+
 jobs:
-  print:
+  print_message:
     runs-on: ubuntu-latest
     steps:
-      name: print statement
-      run: echo "Will add code checks here in next challenge"
+      - name: Print Message
+        run: |
+          echo "Pull request detected! Running custom actions..."
