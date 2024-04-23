@@ -32,7 +32,7 @@ jobs:
       run: |
         # Command to trigger Azure Machine Learning job for the development environment
         # Replace `az ml ...` with the actual Azure CLI command to submit the job
-        az ml job create --file job-dev.yml --stream --resource-group eveve --workspace-name my-workspace
+        az ml job create --file job-dev.yaml --stream --resource-group eveve --workspace-name my-workspace
     
   production_job:
     name: Train Model in Production
@@ -59,4 +59,4 @@ jobs:
       run: |
         # Command to trigger Azure Machine Learning job for the production environment 
         # Replace `az ml ...` with the actual Azure CLI command to submit the job
-        az ml job create --file job-prod.yml --stream --resource-group eveve --workspace-name my-workspace
+        az ml job create --file job-prod.yaml --stream --resource-group eveve --workspace-name my-workspace
