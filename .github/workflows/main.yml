@@ -1,0 +1,51 @@
+name: Train Model Workflow
+
+# This specifies that the workflow will run on push events to the main branch.
+on:
+  push:
+    branches:
+      - main
+
+
+jobs:
+  experiment_job:
+    name: Train Model in Development
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+
+    - name: Train model using development dataset
+      env:
+        AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
+      run: |
+        # Command to trigger Azure Machine Learning job for the development environment
+        # Replace `az ml ...` with the actual Azure CLI command to submit the job
+        az ml job create --file job-dev.yml --stream
+    
+  production_job:
+    name: Train Model in Production
+    needs: experiment_job  # This job runs only if 'experiment_job' succeeds
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+
+   
+    - name: Train model using production dataset
+      env:
+        AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
+      run: |
+        # Command to trigger Azure Machine Learning job for the production environment 
+        # Replace `az ml ...` with the actual Azure CLI command to submit the job
+        az ml job create --file job-prod.yml --stream
