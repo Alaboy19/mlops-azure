@@ -14,6 +14,8 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+    - name: Install az ml extension
+      run: az extension add -n ml -y
 
     - name: Set up Python
       uses: actions/setup-python@v2
@@ -35,6 +37,8 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+    - name: Install az ml extension
+      run: az extension add -n ml -y
 
     - name: Set up Python
       uses: actions/setup-python@v2
