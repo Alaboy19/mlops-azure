@@ -1,0 +1,24 @@
+  name: Deploy ML Model to Azure
+
+    on: 
+      workflow_dispatch:
+
+    jobs:
+      deploy:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout Code
+          uses: actions/checkout@v2
+        
+        - name: Login to Azure
+          uses: azure/login@v1
+          with:
+            creds: ${{ secrets.AZURE_CREDENTIALS }}
+        
+        - name: Install Azure ML CLI Extension
+          run: az extension add -n ml
+        
+        - name: Deploy Model to Endpoint
+          run: |
+            az ml model deploy -n my-workspace-pwlkn --model new:latest --type real-time --overwrite
+            echo "Model deployed to endpoint"
