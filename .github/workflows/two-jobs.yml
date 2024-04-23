@@ -1,0 +1,21 @@
+name:
+
+on:
+  work_disptach:
+
+jobs:
+  job1:
+    name: experiment-job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Message
+        run: |
+          echo "Pull request detected! Running custom actions..."
+  job2:
+    name: production-job
+    needs: experiment-job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Message
+        run: |
+          echo "Pull request detected! Running custom actions..."
